@@ -1,11 +1,11 @@
 {
-  "name": "xdoa-workflow-ui",
-  "version": "1.2.4",
+  "name": "workflow-ui-plus",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Liangism/xdoa-workflow-ui"
+    "url": "https://github.com/Liangism/workflow-ui-plus"
   },
-  "main": "lib/workflow-ui.common.js",
+  "main": "lib/workflow-ui-plus.common.js",
   "files": [
     "src/",
     "lib/"
