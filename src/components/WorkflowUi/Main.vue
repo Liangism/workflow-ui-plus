@@ -129,7 +129,7 @@ import ErrorsModal from './errors-modal'
 import { iteratorData, addNewNode, delNode, checkData } from './process'
 
 export default {
-  name: 'WorkflowUi',
+  name: 'Workflow',
   directives: {
     drag: {
       //鼠标拖拽插件-自定义指令方式

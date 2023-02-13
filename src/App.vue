@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Main from './components/Generator/Main'
+import Main from './components/WorkflowUi/Main'
 export default {
   name: 'App',
   components: {
