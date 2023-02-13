@@ -59,10 +59,6 @@ export default {
 </script>
 ```
 
-## 源码 
-
-https://github.com/go-workflow/workflow-ui
-
 
 ### 测试
 
