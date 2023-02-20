@@ -1,13 +1,14 @@
 <template>
-  <div class="add-node-btn-box">
+  <div class='add-node-btn-box'>
     <AddNodeBtn
-      :node="node"
-      @addnode="addnode"
+      :node='node'
+      @addnode='addnode'
     />
   </div>
 </template>
 <script>
 import AddNodeBtn from './add-node-btn'
+
 export default {
   name: 'AddNodeBtnBox',
   components: {
@@ -19,10 +20,9 @@ export default {
       default: undefined
     }
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   methods: {
-    addnode (node) {
+    addnode(node) {
       // console.log('add-node-btn-box 新结节')
       // console.log(node)
       this.$emit('addnode', node)

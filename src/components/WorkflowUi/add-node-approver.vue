@@ -1,22 +1,22 @@
 <template>
-  <AModal :dialog.sync="dialog1" append-to-body @close="cancel">
-    <div class="panel-approver">
-      <div class="common-group approver-type-wrapper">
-        <div class="group-title">
+  <AModal :dialog.sync='dialog1' append-to-body @close='cancel'>
+    <div class='panel-approver'>
+      <div class='common-group approver-type-wrapper'>
+        <div class='group-title'>
           选择审批对象
         </div>
-        <div class="group-content">
+        <div class='group-content'>
           <div>
-            <div class="ant-radio-group ant-radio-group-outline">
+            <div class='ant-radio-group ant-radio-group-outline'>
               <label
-                v-for="(a, index) in approvers"
-                :key="index"
+                v-for='(a, index) in approvers'
+                :key='index'
                 :class="[
                   currentApp === a.value
                     ? 'ant-radio-wrapper ant-radio-wrapper-checked'
                     : 'ant-radio-wrapper'
                 ]"
-                @click="setApprover(a)"
+                @click='setApprover(a)'
               >
                 <span
                   :class="[
@@ -26,11 +26,11 @@
                   ]"
                 >
                   <input
-                    type="radio"
-                    class="ant-radio-input"
-                    :value="a.value"
+                    type='radio'
+                    class='ant-radio-input'
+                    :value='a.value'
                   />
-                  <span class="ant-radio-inner"></span>
+                  <span class='ant-radio-inner'></span>
                 </span>
                 <span>{{ a.label }}</span>
               </label>
@@ -38,34 +38,34 @@
           </div>
           <div
             v-if="currentApp === 'target_label' && !showAddRole"
-            class="approver-actions"
+            class='approver-actions'
           >
             <button
-              type="button"
-              class="ant-btn ant-btn-primary"
-              ant-click-animating-without-extra-node="false"
-              @click="addRole"
+              type='button'
+              class='ant-btn ant-btn-primary'
+              ant-click-animating-without-extra-node='false'
+              @click='addRole'
             >
               <i
-                aria-label="icon: plus"
-                class="anticon anticon-plus"
-                style="color: rgb(255, 255, 255);"
+                aria-label='icon: plus'
+                class='anticon anticon-plus'
+                style='color: rgb(255, 255, 255);'
               >
                 <svg
-                  viewBox="64 64 896 896"
-                  focusable="false"
-                  class=""
-                  data-icon="plus"
-                  width="1em"
-                  height="1em"
-                  fill="currentColor"
-                  aria-hidden="true"
+                  viewBox='64 64 896 896'
+                  focusable='false'
+                  class=''
+                  data-icon='plus'
+                  width='1em'
+                  height='1em'
+                  fill='currentColor'
+                  aria-hidden='true'
                 >
                   <path
-                    d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+                    d='M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z'
                   />
                   <path
-                    d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+                    d='M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z'
                   />
                 </svg>
               </i>
@@ -73,71 +73,71 @@
             </button>
           </div>
           <div
-            v-if="showAddRole"
-            class="ant-row-flex ant-row-flex-space-around ant-row-flex-middle condition-group"
+            v-if='showAddRole'
+            class='ant-row-flex ant-row-flex-space-around ant-row-flex-middle condition-group'
           >
             角色名&nbsp;&nbsp;
             <div
-              class="ant-select ant-select-enabled"
-              style="min-width: 150px;"
+              class='ant-select ant-select-enabled'
+              style='min-width: 150px;'
             >
-              <div class="ant-input-number-input-wrap">
+              <div class='ant-input-number-input-wrap'>
                 <input
-                  v-model="properties1.actionerRules[0].labelNames"
-                  class="ant-input-number-input"
-                  placeholder="输入角色名"
+                  v-model='properties1.actionerRules[0].labelNames'
+                  class='ant-input-number-input'
+                  placeholder='输入角色名'
                 />
               </div>
             </div>
           </div>
           <div
             v-if="currentApp === 'target_management'"
-            class="approver-actions"
+            class='approver-actions'
           >
             发起人的&nbsp;&nbsp;
             <div
-              class="ant-select ant-select-enabled"
-              style="min-width: 150px;"
+              class='ant-select ant-select-enabled'
+              style='min-width: 150px;'
             >
               <div
-                class="ant-select-selection ant-select-selection--single"
-                aria-expanded="false"
-                tabindex="0"
+                class='ant-select-selection ant-select-selection--single'
+                aria-expanded='false'
+                tabindex='0'
               >
                 <div
-                  class="ant-select-selection__rendered"
-                  data-spm-anchor-id="0.0.0.i263.2f244490UdKR44"
+                  class='ant-select-selection__rendered'
+                  data-spm-anchor-id='0.0.0.i263.2f244490UdKR44'
                 >
                   <div
-                    class="ant-select-selection-selected-value"
-                    title="直接主管"
-                    style="display: block; opacity: 1;"
-                    data-spm-anchor-id="0.0.0.i265.2f244490UdKR44"
+                    class='ant-select-selection-selected-value'
+                    title='直接主管'
+                    style='display: block; opacity: 1;'
+                    data-spm-anchor-id='0.0.0.i265.2f244490UdKR44'
                   >
                     直接主管
                   </div>
                 </div>
               </div>
             </div>
-            <div class="area-auto-up" />
+            <div class='area-auto-up' />
           </div>
         </div>
       </div>
-      <div class="common-group area-act-type-wrapper">
-        <div class="group-title">
+      <div class='common-group area-act-type-wrapper'>
+        <div class='group-title'>
           <div>多人审批时采用的审批方式</div>
         </div>
-        <div class="group-content">
-          <div class="ant-radio-group ant-radio-group-outline">
+        <div class='group-content'>
+          <div class='ant-radio-group ant-radio-group-outline'>
             <label
-              v-for="(a, i) in actTypes"
-              :key="i"
+              v-for='(a, i) in actTypes'
+              :key='i'
               :class="[
                 currentAction === a.value
                   ? 'ant-radio-wrapper ant-radio-wrapper-checked'
                   : 'ant-radio-wrapper'
               ]"
-              @click="setAction(a)"
+              @click='setAction(a)'
             >
               <span
                 :class="[
@@ -146,23 +146,23 @@
                     : 'ant-radio'
                 ]"
               >
-                <input type="radio" class="ant-radio-input" :value="a.value" />
-                <span class="ant-radio-inner"></span>
+                <input type='radio' class='ant-radio-input' :value='a.value' />
+                <span class='ant-radio-inner'></span>
               </span>
               <span>{{ a.label }}</span>
             </label>
           </div>
         </div>
       </div>
-      <div class="common-group none-actioner-wrapper">
-        <button type="button" class="ant-btn ant-btn-default" @click="cancel">
+      <div class='common-group none-actioner-wrapper'>
+        <button type='button' class='ant-btn ant-btn-default' @click='cancel'>
           <span>取 消</span>
         </button>
-        <button type="button" class="ant-btn ant-btn-primary" @click="save">
+        <button type='button' class='ant-btn ant-btn-primary' @click='save'>
           <span>保 存</span>
         </button>
       </div>
-      <div class="common-group none-actioner-wrapper">
+      <div class='common-group none-actioner-wrapper'>
         {{ properties1 }}
       </div>
     </div>
@@ -229,16 +229,16 @@ export default {
       this.properties1 = this.properties1
         ? this.properties1
         : {
-            actionerRules: [
-              {
-                type: 'target_management',
-                level: 1,
-                isEmpty: false,
-                autoUp: true,
-                actType: 'or'
-              }
-            ]
-          }
+          actionerRules: [
+            {
+              type: 'target_management',
+              level: 1,
+              isEmpty: false,
+              autoUp: true,
+              actType: 'or'
+            }
+          ]
+        }
       var rule =
         this.properties1.actionerRules && this.properties1.actionerRules[0]
       if (rule) {

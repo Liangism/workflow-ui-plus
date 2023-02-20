@@ -1,23 +1,23 @@
 <template>
-  <div class="branch-wrap">
-    <div class="branch-box-wrap">
+  <div class='branch-wrap'>
+    <div class='branch-box-wrap'>
       <BranchBox
-        @addCondition="addCondition"
-        @delNode="delNode"
+        @addCondition='addCondition'
+        @delNode='delNode'
       >
         <ColBox
-          v-for="(item,index) in node.conditionNodes"
-          :key="index"
-          :node="item"
-          :pos="index"
-          :total="node.conditionNodes ? node.conditionNodes.length : 0"
-          @delConditionNode="delConditionNode(item)"
-          @addConditionFactor="addConditionFactor"
+          v-for='(item,index) in node.conditionNodes'
+          :key='index'
+          :node='item'
+          :pos='index'
+          :total='node.conditionNodes ? node.conditionNodes.length : 0'
+          @delConditionNode='delConditionNode(item)'
+          @addConditionFactor='addConditionFactor'
         />
       </BranchBox>
       <AddNodeBtnBox
-        :node="node"
-        @addnode="addnode"
+        :node='node'
+        @addnode='addnode'
       />
     </div>
   </div>
@@ -27,6 +27,7 @@ import BranchBox from './branch-box'
 import ColBox from './col-box'
 import AddNodeBtnBox from './add-node-btn-box'
 import { delConditionNode, setConditionFactor } from './process'
+
 export default {
   components: {
     ColBox,
@@ -42,10 +43,10 @@ export default {
   data: () => ({
     //
   }),
-  mounted () {
+  mounted() {
   },
   methods: {
-    addCondition () {
+    addCondition() {
       var lastNode = this.node.conditionNodes[this.node.conditionNodes.length - 1]
       var name = '条件' + this.getName(lastNode.name)
       var node = {
@@ -56,25 +57,25 @@ export default {
       }
       this.node.conditionNodes.push(node)
     },
-    getName (name) {
+    getName(name) {
       var num = parseInt(name.substring(2))
       return num + 1
     },
-    addnode (node) {
+    addnode(node) {
       // console.log('branch-wrap 新节点:')
       // console.log(node)
       this.$emit('addnode', node)
     },
-    delConditionNode (item) {
+    delConditionNode(item) {
       delConditionNode(item, this.node)
       if (this.node.conditionNodes.length < 2) {
         this.$emit('delNode')
       }
     },
-    delNode () {
+    delNode() {
       this.$emit('delNode')
     },
-    addConditionFactor (conditionNode) {
+    addConditionFactor(conditionNode) {
       setConditionFactor(conditionNode, this.node)
     }
   }

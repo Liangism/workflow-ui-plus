@@ -1,16 +1,17 @@
 <template>
-  <div class="condition-node">
+  <div class='condition-node'>
     <ConditionNodeBox
-      :node="node"
-      @addnode="addnode"
-      @delConditionNode="delConditionNode"
-      @addConditionFactor="addConditionFactor"
-      @updateCondition="updateCondition"
+      :node='node'
+      @addnode='addnode'
+      @delConditionNode='delConditionNode'
+      @addConditionFactor='addConditionFactor'
+      @updateCondition='updateCondition'
     />
   </div>
 </template>
 <script>
 import ConditionNodeBox from './condition-node-box'
+
 export default {
   name: 'ConditionNode',
   components: {
@@ -31,16 +32,16 @@ export default {
     }
   },
   methods: {
-    addnode (node) {
+    addnode(node) {
       this.$emit('addnode', node)
     },
-    delConditionNode () {
+    delConditionNode() {
       this.$emit('delConditionNode')
     },
-    addConditionFactor (node) {
+    addConditionFactor(node) {
       this.$emit('addConditionFactor', node)
     },
-    updateCondition (node) {
+    updateCondition(node) {
       this.$emit('updateCondition', node)
     }
   }

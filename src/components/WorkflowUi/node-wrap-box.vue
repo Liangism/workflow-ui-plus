@@ -8,79 +8,80 @@
   >
     <div>
       <div
-        class="title"
-        data-spm-anchor-id="0.0.0.i2.2f244490ZxXSWD"
-        :style="titlebg"
+        class='title'
+        data-spm-anchor-id='0.0.0.i2.2f244490ZxXSWD'
+        :style='titlebg'
       >
-        <span class="iconfont">
+        <span class='iconfont'>
           <svg
-            class=""
-            viewBox="64 64 896 896"
-            fill="currentColor"
-            aria-hidden="true"
-            width="1em"
-            height="1em"
+            class=''
+            viewBox='64 64 896 896'
+            fill='currentColor'
+            aria-hidden='true'
+            width='1em'
+            height='1em'
           >
-            <path :d="icon" />
+            <path :d='icon' />
           </svg>
         </span>
         <span
-          class="editable-title"
-          data-spm-anchor-id="0.0.0.i53.2f244490UdKR44"
-          >{{ nodetype }}</span
+          class='editable-title'
+          data-spm-anchor-id='0.0.0.i53.2f244490UdKR44'
+        >{{ nodetype }}</span
         >
         <i
-          aria-label="icon: close"
-          tabindex="-1"
-          class="anticon anticon-close close"
-          @click="delNode"
+          aria-label='icon: close'
+          tabindex='-1'
+          class='anticon anticon-close close'
+          @click='delNode'
         >
           <svg
-            viewBox="64 64 896 896"
-            focusable="false"
-            class=""
-            data-icon="close"
-            width="1em"
-            height="1em"
-            fill="currentColor"
+            viewBox='64 64 896 896'
+            focusable='false'
+            class=''
+            data-icon='close'
+            width='1em'
+            height='1em'
+            fill='currentColor'
           >
             <path
-              d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+              d='M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z'
             />
           </svg>
         </i>
       </div>
-      <div class="content" @click="addApprover">
-        <div class="text">
+      <div class='content' @click='addApprover'>
+        <div class='text'>
           {{ content }}
         </div>
-        <i aria-label="icon: right" class="anticon anticon-right arrow">
+        <i aria-label='icon: right' class='anticon anticon-right arrow'>
           <svg
-            viewBox="64 64 896 896"
-            focusable="false"
-            class=""
-            data-icon="right"
-            width="1em"
-            height="1em"
-            fill="currentColor"
-            aria-hidden="true"
+            viewBox='64 64 896 896'
+            focusable='false'
+            class=''
+            data-icon='right'
+            width='1em'
+            height='1em'
+            fill='currentColor'
+            aria-hidden='true'
           >
             <path
-              d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+              d='M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z'
             />
           </svg>
         </i>
       </div>
     </div>
     <AddNodeApprover
-      :dialog.sync="dialog"
-      :properties="node.properties"
-      @setProperties="setProperties"
+      :dialog.sync='dialog'
+      :properties='node.properties'
+      @setProperties='setProperties'
     />
   </div>
 </template>
 <script>
 import AddNodeApprover from './add-node-approver.vue'
+
 export default {
   name: 'NodeWrapBox',
   components: {
@@ -108,7 +109,7 @@ export default {
     delNode() {
       this.$emit('delNode')
     },
-    addApprover () {
+    addApprover() {
       this.dialog = true
     },
     setProperties(properties) {

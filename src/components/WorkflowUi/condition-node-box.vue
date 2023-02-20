@@ -1,35 +1,35 @@
 <template>
-  <div class="condition-node-box">
-    <div class="auto-judge node_8f5e_917f">
-      <div class="sort-left">
+  <div class='condition-node-box'>
+    <div class='auto-judge node_8f5e_917f'>
+      <div class='sort-left'>
         &lt;
       </div>
-      <div class="title-wrapper">
+      <div class='title-wrapper'>
         <span
-          class="delete"
-          style="float:right;color: grey;"
-          @click="delConditionNode"
+          class='delete'
+          style='float:right;color: grey;'
+          @click='delConditionNode'
         >
           X
         </span>
         <span
-          class="editable-title"
-          data-spm-anchor-id="0.0.0.i35.2f244490ZxXSWD"
+          class='editable-title'
+          data-spm-anchor-id='0.0.0.i35.2f244490ZxXSWD'
         >
           {{ node.name }}
         </span>
       </div>
-      <div class="content" @click="setProperties">
+      <div class='content' @click='setProperties'>
         <div>{{ text1 }}</div>
       </div>
     </div>
-    <AddNodeBtn :node="node" @addnode="addnode" />
+    <AddNodeBtn :node='node' @addnode='addnode' />
     <AddNodeCondition
-      :show.sync="show"
-      :properties="node.properties"
-      :name="node.name"
+      :show.sync='show'
+      :properties='node.properties'
+      :name='node.name'
       append-to-body
-      @on-success="setPropertiesOK"
+      @on-success='setPropertiesOK'
     />
   </div>
 </template>

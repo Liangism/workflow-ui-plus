@@ -1,14 +1,15 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <Main
-      :data.sync="data"
-      @ok="ok"
+      :data.sync='data'
+      @ok='ok'
     />
   </div>
 </template>
 
 <script>
 import Main from './components/WorkflowUi/Main'
+
 export default {
   name: 'App',
   components: {
@@ -20,12 +21,11 @@ export default {
       default: undefined
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   methods: {
-    ok (data) {
+    ok(data) {
       this.$emit('update:data', data)
     }
   }

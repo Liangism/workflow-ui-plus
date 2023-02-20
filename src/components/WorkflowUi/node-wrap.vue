@@ -1,18 +1,19 @@
 <template>
-  <div class="node-wrap">
+  <div class='node-wrap'>
     <NodeWrapBox
-      :node="node"
-      @delNode="delNode"
+      :node='node'
+      @delNode='delNode'
     />
     <AddNodeBtnBox
-      :node="node"
-      @addnode="addnode"
+      :node='node'
+      @addnode='addnode'
     />
   </div>
 </template>
 <script>
 import NodeWrapBox from './node-wrap-box'
 import AddNodeBtnBox from './add-node-btn-box'
+
 export default {
   name: 'NodeWrap',
   components: {
@@ -26,12 +27,12 @@ export default {
     }
   },
   methods: {
-    addnode (node) {
+    addnode(node) {
       // console.log('node-wrap 新节点:')
       // console.log(node)
       this.$emit('addnode', node)
     },
-    delNode () {
+    delNode() {
       this.$emit('delNode')
     }
   }

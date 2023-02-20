@@ -2,22 +2,22 @@
   <div>
     <NodeWrap
       v-if="node.type == 'start' || node.type == 'approver' || node.type == 'notifier'"
-      :node="node"
-      @addnode="addnode"
-      @delNode="delNode"
+      :node='node'
+      @addnode='addnode'
+      @delNode='delNode'
     />
     <ConditionNode
       v-if="node.type == 'condition'"
-      :node.sync="node"
-      @addnode="addnode"
-      @delConditionNode="delConditionNode"
-      @addConditionFactor="addConditionFactor"
+      :node.sync='node'
+      @addnode='addnode'
+      @delConditionNode='delConditionNode'
+      @addConditionFactor='addConditionFactor'
     />
     <BranchWrap
       v-if="node.type == 'route'"
-      :node="node"
-      @addnode="addnode"
-      @delNode="delNode"
+      :node='node'
+      @addnode='addnode'
+      @delNode='delNode'
     />
   </div>
 </template>
@@ -25,6 +25,7 @@
 import NodeWrap from './node-wrap'
 import ConditionNode from './condition-node'
 import BranchWrap from './branch-wrap'
+
 export default {
   name: 'Node',
   components: {
@@ -39,18 +40,18 @@ export default {
     }
   },
   methods: {
-    addnode (node) {
+    addnode(node) {
       // console.log('node 新节点:')
       // console.log(node)
       this.$emit('addnode', node)
     },
-    delNode () {
+    delNode() {
       this.$emit('delNode')
     },
-    delConditionNode () {
+    delConditionNode() {
       this.$emit('delConditionNode')
     },
-    addConditionFactor (node) {
+    addConditionFactor(node) {
       this.$emit('addConditionFactor', node)
       this.node = node
       // console.log(this.node)

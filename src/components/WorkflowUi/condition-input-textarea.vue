@@ -1,6 +1,6 @@
 <template>
-  <div style="width: 80%;">
-    <textarea v-model="value1" class="ant-input-textarea"></textarea>
+  <div style='width: 80%;'>
+    <textarea v-model='value1' class='ant-input-textarea'></textarea>
   </div>
 </template>
 <script>
@@ -19,6 +19,7 @@ export default {
       this.$emit('update:value', val)
     }
   },
-  mounted() {}
+  mounted() {
+  }
 }
 </script>
