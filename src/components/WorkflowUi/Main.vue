@@ -1,121 +1,153 @@
 <template>
   <div>
-    <div class="fd-nav">
-      <div class="fd-nav-left">
-        <div class="fd-nav-back" @click="back">
-          <i aria-label="icon: left" class="anticon anticon-left">
+    <div class='fd-nav'>
+      <div class='fd-nav-left'>
+        <div class='fd-nav-back' @click='back'>
+          <i aria-label='icon: left' class='anticon anticon-left'>
             <svg
-              viewBox="64 64 896 896"
-              focusable="false"
-              class=""
-              data-icon="left"
-              width="1em"
-              height="1em"
-              fill="currentColor"
-              aria-hidden="true"
+              viewBox='64 64 896 896'
+              focusable='false'
+              class=''
+              data-icon='left'
+              width='1em'
+              height='1em'
+              fill='currentColor'
+              aria-hidden='true'
             >
               <path
-                d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                d='M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z'
               />
             </svg>
           </i>
         </div>
-        <div class="fd-nav-title">
+        <div class='fd-nav-title'>
           {{ data1.title }}
         </div>
       </div>
-      <div class="fd-nav-center">
-        <div class="fd-nav-container">
-          <div class="fd-nav-item">
-            <span class="order-num">1</span>流程设计
+      <div class='fd-nav-center'>
+        <div class='fd-nav-container' v-show='!editFlowName'>
+          <div class='fd-nav-item'>
+            {{ flowName1 }}
           </div>
+          <i
+            aria-label='icon: edit'
+            tabindex='-1'
+            class='anticon anticon-edit'
+            @click='toggleEditFlowName'
+            title='点击修改'
+            v-if='IsPreviewModel'
+          >
+            <svg
+              viewBox='64 64 896 896'
+              focusable='false'
+              class=''
+              data-icon='edit'
+              width='1em'
+              height='1em'
+              fill='currentColor'
+              aria-hidden='true'
+            >
+              <path
+                d='M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z'
+              />
+            </svg>
+          </i>
+        </div>
+        <div class='flow-name' v-show='editFlowName'>
+          <input
+            v-model='flowName1'
+            ref='flowNameInput'
+            class='flow-name-input'
+            placeholder='请输入流程名称'
+            @blur='flowNameInputBlur'
+          />
         </div>
       </div>
-      <div class="fd-nav-right">
+      <div class='fd-nav-right'>
         <button
-          type="button"
-          class="ant-btn button-preview"
-          @click="preview"
-          v-show="IsPreviewModel"
+          type='button'
+          class='ant-btn button-preview'
+          @click='preview'
+          v-show='IsPreviewModel'
         >
           <span>预 览</span>
         </button>
         <button
-          type="button"
-          class="ant-btn button-preview"
-          @click="save"
-          v-show="IsPreviewModel"
+          type='button'
+          class='ant-btn button-preview'
+          @click='save'
+          v-show='IsPreviewModel'
         >
           <span>发 布</span>
         </button>
       </div>
     </div>
-    <div class="fd-nav-content">
-      <div class="dingflow-design">
-        <div class="zoom">
-          <div class="zoom-out" @click="zoom(-10)" />
+    <div class='fd-nav-content'>
+      <div class='dingflow-design'>
+        <div class='zoom'>
+          <div class='zoom-out' @click='zoom(-10)' />
           <span>{{ zoomValue || 100 }}%</span>
-          <div class="zoom-in" @click="zoom(10)" />
+          <div class='zoom-in' @click='zoom(10)' />
         </div>
-        <div ref="scale" class="ie-polyfill-container" style="overflow: hidden">
+        <div ref='scale' class='ie-polyfill-container' style='overflow: hidden'>
           <div
-            id="box-scale"
-            :key="key"
-            class="box-scale"
-            :style="
+            id='box-scale'
+            :key='key'
+            class='box-scale'
+            :style='
               `transform: ${
                 zoomStyle.transform
               }; transform-origin: 50% 0px 0px;`
-            "
+            '
             v-drag
           >
             <Node
-              v-for="(item, index) in items"
-              :key="index"
-              :node="item"
-              @addnode="addnode"
-              @delNode="delNode(item)"
+              v-for='(item, index) in items'
+              :key='index'
+              :node='item'
+              @addnode='addnode'
+              @delNode='delNode(item)'
             />
             <EndNode />
-            <AModal :dialog.sync="viewModal" append-to-body>
-              <i class="anticon anticon-copy" title="复制" @click="copyData">
+            <AModal :dialog.sync='viewModal' append-to-body>
+              <i class='anticon anticon-copy' title='复制' @click='copyData'>
                 <svg
-                  t="1675939759178"
-                  class="icon"
-                  viewBox="0 0 1024 1024"
-                  xmlns="http://www.w3.org/2000/svg"
-                  p-id="4386"
-                  width="1em"
-                  height="1em"
+                  t='1675939759178'
+                  class='icon'
+                  viewBox='0 0 1024 1024'
+                  xmlns='http://www.w3.org/2000/svg'
+                  p-id='4386'
+                  width='1em'
+                  height='1em'
                 >
                   <path
-                    d="M706.5 188.4H190.2c-29.8 0-54 24.2-54 54v662.9c0 29.8 24.2 54 54 54h516.3c29.8 0 54-24.2 54-54V242.4c0-29.8-24.2-54-54-54z m-18 698.9H208.2V260.4h480.3v626.9z"
-                    p-id="4387"
-                    fill="#bfbfbf"
+                    d='M706.5 188.4H190.2c-29.8 0-54 24.2-54 54v662.9c0 29.8 24.2 54 54 54h516.3c29.8 0 54-24.2 54-54V242.4c0-29.8-24.2-54-54-54z m-18 698.9H208.2V260.4h480.3v626.9z'
+                    p-id='4387'
+                    fill='#bfbfbf'
                   ></path>
                   <path
-                    d="M313.7 512.2h275.2c19.9 0 36-16.1 36-36s-16.1-36-36-36H313.7c-19.9 0-36 16.1-36 36s16.1 36 36 36zM313.7 715.2h201.6c19.9 0 36-16.1 36-36s-16.1-36-36-36H313.7c-19.9 0-36 16.1-36 36s16.1 36 36 36z"
-                    p-id="4388"
-                    fill="#bfbfbf"
+                    d='M313.7 512.2h275.2c19.9 0 36-16.1 36-36s-16.1-36-36-36H313.7c-19.9 0-36 16.1-36 36s16.1 36 36 36zM313.7 715.2h201.6c19.9 0 36-16.1 36-36s-16.1-36-36-36H313.7c-19.9 0-36 16.1-36 36s16.1 36 36 36z'
+                    p-id='4388'
+                    fill='#bfbfbf'
                   ></path>
                   <path
-                    d="M837.2 64.7H302.9c-19.9 0-36 16.1-36 36s16.1 36 36 36h516.3v662.9c0 19.9 16.1 36 36 36s36-16.1 36-36V118.7c0-29.8-24.2-54-54-54z"
-                    p-id="4389"
-                    fill="#bfbfbf"
+                    d='M837.2 64.7H302.9c-19.9 0-36 16.1-36 36s16.1 36 36 36h516.3v662.9c0 19.9 16.1 36 36 36s36-16.1 36-36V118.7c0-29.8-24.2-54-54-54z'
+                    p-id='4389'
+                    fill='#bfbfbf'
                   ></path>
                 </svg>
               </i>
               <pre
-                style="
+                style='
                   font-family: Monaco, Menlo, Consolas, Bitstream Vera Sans Mono,
                     monospace;
                   font-size: 14px;
-                "
+                '
               >
                 {{ dataStr }}
               </pre>
             </AModal>
-            <ErrorsModal :dialog.sync="errorsModal" :data="errors" />
+            <ErrorsModal :dialog.sync='errorsModal' :data='errors' />
           </div>
         </div>
       </div>
@@ -134,9 +166,9 @@ export default {
     drag: {
       //鼠标拖拽插件-自定义指令方式
       // 指令的定义
-      inserted: function(el) {
+      inserted(el) {
         // el.drag();
-        console.log(el)
+        // console.log(el)
         //获取元素
         // var dv = document.getElementById("dv");
         let x = 0
@@ -160,9 +192,7 @@ export default {
         }
         //鼠标移动
         window.onmousemove = function(e) {
-          if (isDown == false) {
-            return
-          }
+          if (!isDown) return
           //获取x和y
           let nx = e.clientX
           let ny = e.clientY
@@ -188,6 +218,10 @@ export default {
     ErrorsModal
   },
   props: {
+    flowName: {
+      type: String,
+      default: '流程设计'
+    },
     data: {
       type: Object,
       default: undefined
@@ -204,6 +238,8 @@ export default {
       transform: 1
     },
     IsPreviewModel: false, //预览模式
+    flowName1: '',
+    editFlowName: false,
     data1: {
       title: '返回',
       childNode: {
@@ -220,6 +256,12 @@ export default {
     }
   },
   watch: {
+    flowName: {
+      handler(val) {
+        this.flowName1 = val
+      },
+      immediate: true
+    },
     data: {
       handler(val) {
         this.data1 = val
@@ -250,16 +292,23 @@ export default {
       }
       this.iteratorData(this.data1.childNode)
     },
+    //新增
+    addModel() {
+      this.clearItems()
+      this.editFlowName = true
+    },
     //预览模式
     previewModel(data) {
       //隐藏按钮
       this.IsPreviewModel = false
+      this.editFlowName = false
       this.iteratorData(data)
     },
     //编辑模式
     editModel(data) {
       //显示按钮
       this.IsPreviewModel = true
+      this.editFlowName = false
       this.iteratorData(data)
     },
     initialNode() {
@@ -290,6 +339,7 @@ export default {
         this.errors = errors
         return
       }
+      this.$emit('update:flowName', this.flowName1)
       this.$emit('ok', this.data1)
       console.log(this.data1)
     },
@@ -365,6 +415,19 @@ export default {
       setTimeout(() => {
         document.body.removeChild(tipBox)
       }, 1500)
+    },
+    toggleEditFlowName() {
+      this.editFlowName = !this.editFlowName
+      if (this.editFlowName) {
+        this.$nextTick(() => {
+          this.$refs.flowNameInput.focus()
+        })
+      }
+    },
+    flowNameInputBlur() {
+      if (this.flowName1) {
+        this.toggleEditFlowName()
+      }
     }
   }
 }

@@ -175,7 +175,9 @@ export default {
   },
   mounted() {
     this.data1 = this.data
-    this.setValue(this.data1)
+    this.$nextTick(() => {
+      this.setValue(this.data1)
+    })
   },
   methods: {
     del() {

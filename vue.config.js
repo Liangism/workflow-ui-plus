@@ -1,11 +1,13 @@
 const path = require('path')
-function resolve (dir) {
+
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
+
 module.exports = {
   parallel: false,
   productionSourceMap: false,
-  lintOnSave: false, 
+  lintOnSave: false,
   pages: {
     index: {
       // 测试时使用
