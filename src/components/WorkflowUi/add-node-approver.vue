@@ -183,7 +183,7 @@ export default {
     },
     properties: {
       type: Object,
-      default: undefined
+      default: () => {}
     }
   },
   data: () => ({
@@ -220,12 +220,14 @@ export default {
     dialog1(val) {
       this.$emit('update:dialog', val)
     },
-    properties(val) {
-      this.properties1 = val
+    properties: {
+      handler(val) {
+        this.properties1 = val
+      },
+      immediate: true
     }
   },
   mounted() {
-    // this.properties1 = this.properties
     this.init()
     Object.assign(this.temp, this.properties1)
   },
