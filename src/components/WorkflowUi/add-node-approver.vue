@@ -83,8 +83,9 @@
             >
               <div class='ant-input-number-input-wrap'>
                 <input
+                  ref='roleInput'
                   v-model='properties1.actionerRules[0].labelNames'
-                  class='ant-input-number-input'
+                  class='ant-input-textarea'
                   placeholder='输入角色名'
                 />
               </div>
@@ -213,14 +214,18 @@ export default {
   }),
   watch: {
     dialog(val) {
+      val && this.showAddRole && this.focusRoleInput()
       this.dialog1 = val
     },
     dialog1(val) {
       this.$emit('update:dialog', val)
+    },
+    properties(val) {
+      this.properties1 = val
     }
   },
   mounted() {
-    this.properties1 = this.properties
+    // this.properties1 = this.properties
     this.init()
     Object.assign(this.temp, this.properties1)
   },
@@ -270,10 +275,7 @@ export default {
     },
     setApprover(app) {
       this.currentApp = app.value
-      if (app.value === 'target_label') {
-      } else {
-        this.showAddRole = false
-      }
+      this.showAddRole = app === 'target_label'
       this.properties1.actionerRules = []
       switch (app.value) {
         case 'target_management':
@@ -289,7 +291,7 @@ export default {
             type: 'target_label',
             labelNames: '',
             // labels: '',
-            labels: 1, //修复服务器不能识别空字符串的bug，默认为1即可。  20220428 liuhj
+            labels: 1,
             isEmpty: false,
             memberCount: 1,
             actType: 'or'
@@ -304,6 +306,12 @@ export default {
     },
     addRole() {
       this.showAddRole = true
+      this.focusRoleInput()
+    },
+    focusRoleInput() {
+      this.$nextTick(() => {
+        this.$refs.roleInput.focus()
+      })
     }
   }
 }
